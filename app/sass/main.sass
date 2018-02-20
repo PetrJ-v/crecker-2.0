@@ -1,0 +1,207 @@
+@import "vars"
+@import "fonts"
+
+//common styles______________________________
+*
+	margin: 0
+	padding: 0
+html
+	min-height: 100%
+	min-width: 320px
+	position: relative
+img
+	margin: 0
+	padding: 0
+
+.bold
+	font-family: $default-font-bold
+
+body
+	max-width: 1008px
+	margin: 0 auto
+	font-family: $default-font
+	font-size: 14px
+	line-height: 22px
+	color: black
+	background-color: white
+	
+.header
+	display: table
+	width: 100%
+	max-width: 960px
+	margin: auto
+	padding: $default-distance 0
+	overflow: hidden
+	border-bottom: 1px solid $dark-grey
+	text-align: center
+	& input, & span
+		display: block
+		float: left
+	& input
+		width: 90%
+	& span
+		width: 10%
+		height: 100%
+		vertical-align: baseline
+
+
+.range-output
+	height: 100%
+	vertical-align: baseline
+
+input[type=range]
+	-webkit-appearance: none
+	margin: 18px 0
+
+input[type=range]:focus
+	outline: none
+
+input[type=range]::-webkit-slider-runnable-track
+	width: 100%
+	height: 4px
+	cursor: pointer
+	animate: 0.2s
+	// box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
+	background: #00a651
+	border-radius: 1.3px
+
+input[type=range]::-webkit-slider-thumb
+	// box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
+	height: 40px
+	width: 40px
+	border-radius: 22px
+	background: #ffffff
+	cursor: pointer
+	-webkit-appearance: none
+	margin-top: -18px
+
+input[type=range]:focus::-webkit-slider-runnable-track
+	background: #367ebd
+
+input[type=range]::-moz-range-track
+	width: 100%
+	height: 4px
+	cursor: pointer
+	animate: 0.2s
+	// box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
+	border-radius: 1.3px
+
+input[type=range]::-moz-range-thumb
+	// box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
+	height: 40px
+	width: 40px
+	border-radius: 22px
+	background: #ffffff
+	cursor: pointer
+
+input[type=range]::-ms-track
+	width: 100%
+	height: 4px
+	cursor: pointer
+	animate: 0.2s
+	background: transparent
+	border-color: transparent
+	border-width: 40px 0
+	color: transparent
+
+input[type=range]::-ms-fill-lower
+	border-radius: 2.6px
+	// box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
+
+input[type=range]::-ms-fill-upper
+	border-radius: 2.6px
+	// box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
+
+input[type=range]::-ms-thumb
+	// box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d
+	height: 40px
+	width: 40px
+	border-radius: 22px
+	background: #ffffff
+	cursor: pointer
+
+input[type=range]:focus::-ms-fill-lower
+	background: #00a651
+
+input[type=range]:focus::-ms-fill-upper
+	background: #367ebd
+
+input[type=range].range1
+	&::-webkit-slider-runnable-track
+		background: #00a651
+	&::-webkit-slider-thumb
+		border: 2px solid #00a651
+	&::-moz-range-track
+		background: #00a651
+	&::-moz-range-thumb
+		border: 2px solid #00a651
+	&::-ms-fill-lower
+		background: #00a651
+		border: 0.2px solid #00a651
+	&::-ms-fill-upper
+		background: #00a651
+		border: 0.2px solid #00a651
+	&::-ms-thumb
+		border: 2px solid #00a651
+
+input[type=range].range2
+	&::-webkit-slider-runnable-track
+		background: #49743f
+	&::-webkit-slider-thumb
+		border: 2px solid #49743f
+	&::-moz-range-track
+		background: #49743f
+	&::-moz-range-thumb
+		border: 2px solid #49743f
+	&::-ms-fill-lower
+		background: #49743f
+		border: 0.2px solid #49743f
+	&::-ms-fill-upper
+		background: #49743f
+		border: 0.2px solid #49743f
+	&::-ms-thumb
+		border: 2px solid #49743f
+
+input[type=range].range3
+	&::-webkit-slider-runnable-track
+		background: #aba000
+	&::-webkit-slider-thumb
+		border: 2px solid #aba000
+	&::-moz-range-track
+		background: #aba000
+	&::-moz-range-thumb
+		border: 2px solid #aba000
+	&::-ms-fill-lower
+		background: #aba000
+		border: 0.2px solid #aba000
+	&::-ms-fill-upper
+		background: #aba000
+		border: 0.2px solid #aba000
+	&::-ms-thumb
+		border: 2px solid #aba000
+
+input[type=range].range4
+	&::-webkit-slider-runnable-track
+		background: #939190
+	&::-webkit-slider-thumb
+		border: 2px solid #939190
+	&::-moz-range-track
+		background: #939190
+	&::-moz-range-thumb
+		border: 2px solid #939190
+	&::-ms-fill-lower
+		background: #939190
+		border: 0.2px solid #939190
+	&::-ms-fill-upper
+		background: #939190
+		border: 0.2px solid #939190
+	&::-ms-thumb
+		border: 2px solid #939190
+
+
+
+
+//--------------------------------------------------------------
+@import "media"
+
+

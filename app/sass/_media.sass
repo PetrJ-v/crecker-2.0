@@ -1,0 +1,162 @@
+@import "vars"
+
+/*==========  Desktop First  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1400px)
+	/**/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px)
+	/**/
+
+/* Medium Devices, Desktops */
+// @media only screen and (max-width : 991px) оригинал
+@media only screen and (max-width : 960px)
+	/**/
+	body
+		margin: 0 20px
+	.main-left
+		width: 25%
+	.center
+		width: 75%
+
+	.center-middle
+		&__img
+			width: 22%
+			&:nth-child(n)
+				margin-left: 4%
+			&:nth-child(4n+1)
+				margin-left: 0
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 767px)
+	/**/
+	.header__logo
+		width: 92px
+		padding-right: $default-distance
+
+	.header-content
+		&__left
+			padding-right: $default-distance
+
+	.main-left
+		width: 34%
+		&__top ul
+			padding: 7px
+	.center
+		width: 66%
+	.center-middle
+		&__img
+			width: 26%
+			&:nth-child(n)
+				margin-left: 11%
+			&:nth-child(3n+1)
+				margin-left: 0
+
+	.footer
+		&__left, &__center, &__right
+			width: 45%
+		&__left
+			margin: $default-distance/2 5% $default-distance/2 0
+		&__center
+			margin: $default-distance/2 0 $default-distance/2 5%
+		&__right
+			margin: $default-distance/2 0 $default-distance/2 0
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px)
+	/**/
+	body
+		margin: 0 10px
+	.header__logo
+		width: 82px
+		padding: 0 $default-distance/2 0 0
+
+	.header-content
+		&__left
+			width: 40%
+			padding-right: $default-distance / 2
+		&__right
+			width: 60%
+
+	.main-left
+		& div:nth-child(n)
+			margin: 0 $default-distance/2 $default-distance/2 0
+		& div:last-child
+			margin: 0 $default-distance/2 0 0
+
+	.center-center
+		&__img
+			width: 29%
+			&:nth-child(n)
+				margin-left: 6.5%
+			&:nth-child(3n+1)
+				margin-left: 0
+
+	.footer
+		&__left, &__center, &__right
+			float: none
+			width: 100%
+			margin: $default-distance/2 auto
+	.footer__right
+		text-align: center
+		&__position-top, &__position-bottom
+			position: relative
+			display: inline-block
+		&__position-bottom
+			margin-top: 25px
+
+/* Custom, iPhone Retina */
+// @media only screen and (max-width : 320px)
+@media only screen and (max-width : 440px)
+	/**/
+	.main-left, .center
+		display: block
+		width: 100%
+
+	.main-left
+		& div:nth-child(n)
+			display: inline-block
+			max-width: 211px
+			width: 48.3%
+			vertical-align: top
+		& div:last-child
+			margin: 0
+		& div:nth-child(2n+1)
+			margin: 0 1% $default-distance/2 0
+		& div:nth-child(2n)
+			margin: 0 0 $default-distance/2 1%
+		// & div:last-child
+		// 	margin: 0 0 $default-distance/2 1%
+
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px)
+	/**/
+
+
+/*==========  Mobile First  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px)
+	/**/
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px)
+	/**/
+
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px)
+	/**/
+
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 960px)
+	/**/
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px)
+	/**/
+
