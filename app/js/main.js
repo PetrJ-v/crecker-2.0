@@ -1,6 +1,24 @@
 (function($){
 
+	Range = function(el){
+		this.elNumber = el.getAttribute("data-order");
+		// this.direction = "";
+		this.currentValue = $(el).val();
+		this.setState = function(){
+			rangeValue = $(el).val();
+			rangeOutput = $(el).next();
+			rangeOutput.text(rangeValue);
+		}
+	};
 
+	function updateRangesState(rangeElements){
+		var rangeObj = new Array(rangeElements.length);
+		$.each(rangeElements, function(index, val) {
+			rangeObj[index] = new Range(this);
+			rangeObj[index].setState();
+		});
+		return rangeObj;
+	}
 
 	function updateRanges(rangeElements){
 		$.each(rangeElements, function(index, val) {
@@ -50,10 +68,19 @@
 
 
 	$(document).ready(function() {
-		rangeElements = $('.header').find('input');
+		rangeElements = $('.ranges').find('input[type=range]');
+		// updateRangesState(rangeElements);
+		// console.log(updateRangesState(rangeElements));
 
 		updateRanges(rangeElements);
-
+		// myElem = document.getElementById('range1');
+		// range = new Range(myElem);
+		// console.log(range.elementClass);
+		// console.log(range.elNumber);
+		// console.log(range.elNumber );
+		// console.log(myElem);
+		// console.log(myElem.getAttribute("data-order"));
+		// console.log($('.range1').getAttribute("data"));
 
 
 	});

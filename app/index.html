@@ -9,24 +9,26 @@
 </head>
 <body>
 	<div class="header">
-		<div>
-			<input type="range" name="range1" class="range1" min="0" max="100" step="1" value="10">
-			<span class="range-output"></span>
-		</div>
+		<div class="ranges">
+			<div>
+				<input type="range" name="range1" class="range1" id="range1" data-order="1" min="0" max="100" step="1" value="10">
+				<span class="range-output"></span>
+			</div>
 
-		<div>
-			<input type="range" name="range2" class="range2" min="0" max="100" step="1" value="36">
-			<span class=""></span>
-		</div>
+			<div>
+				<input type="range" name="range2" class="range2" data-order="2" min="0" max="100" step="1" value="36">
+				<span class=""></span>
+			</div>
 
-		<div>
-			<input type="range" name="range3" class="range3" min="0" max="100" step="1" value="14">
-			<span class="range-output"></span>
-		</div>
+			<div>
+				<input type="range" name="range3" class="range3" min="0" max="100" step="1" value="14">
+				<span class="range-output"></span>
+			</div>
 
-		<div>
-			<input type="range" name="range4" class="range4" min="0" max="100" step="1" value="40">
-			<span class="range-output"></span>
+			<div>
+				<input type="range" name="range4" disabled="" class="range4" min="0" max="100" step="1" value="40">
+				<span class="range-output"></span>
+			</div>
 		</div>
 	</div>
 	<script   src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
