@@ -1,86 +1,108 @@
 (function($){
 
 	Range = function(el){
-		this.elNumber = el.getAttribute("data-order");
-		// this.direction = "";
-		this.currentValue = $(el).val();
+		this.el = $(el);
+		this.defaultVal = el.value;
 		this.setState = function(){
 			rangeValue = $(el).val();
 			rangeOutput = $(el).next();
 			rangeOutput.text(rangeValue);
-		}
+		};
+		this.setState();
+		this.changed = false;
 	};
 
-	function updateRangesState(rangeElements){
-		var rangeObj = new Array(rangeElements.length);
+	function setUpRanges(rangeElements){
+		var rangeObjects = new Array(rangeElements.length);
+			
 		$.each(rangeElements, function(index, val) {
-			rangeObj[index] = new Range(this);
-			rangeObj[index].setState();
+			rangeObjects[index] = new Range(this);
+			rangeObjects[index].elNumber = index;
 		});
-		return rangeObj;
+		return rangeObjects;
 	}
 
-	function updateRanges(rangeElements){
-		$.each(rangeElements, function(index, val) {
-			var range =  $(this),
-				result = range.next(),
-				defaultValue = range.val();
-
-			result.text(range.val());
-			counter = 0;
-			range.on('input', function(){
-				result.text(range.val());
-				var elClass = $(this).attr("class"),
-				elNumber = elClass.substring(5),
-				currentValue = rangeElements[elNumber - 1].value,
-				direction = ((currentValue - defaultValue) > 0) ? -1 : 1,
-				// console.log($(rangeElements[parseInt(elNumber) + parseInt(counter)]));
-				nextElNumber = parseInt(elNumber) + parseInt(counter);
-				nextEl = $(rangeElements[nextElNumber]);
-				nextElValue = parseInt(nextEl.val());
-				// console.log(nextElValue);
-				// console.log(nextElValue + direction);
-				nextEl.val(nextElValue + direction);
-				// console.log(nextEl.val());
-				++counter;
-				console.log(counter);
-				console.log(rangeElements.length);
-				if (nextElNumber >= rangeElements.length - 1) {
-					counter = 0;
-				}
-				// $(rangeElements[elNumber + counter]).val() += 1;
-
-
-
-				defaultValue = range.val();
-				// console.log(elNumber);
-				// console.log($(rangeElements[elNumber]).val());
-				// eveilebleVal = 100 - rangeElements
-				// elValue = 
-				// $.each(rangeElements, function(index, val) {
-				// 	 if (index > 0) {
-				// 	 	$(this).val($(this).val() - 1);
-				// 	 }
-				// });
-			})
+	function getAvailableElements(rangeObjects, direction, index){
+		availableElements = $.grep(rangeObjects, function(obj){
+			if (direction === 1) {
+				return (obj.changed === false && obj.elNumber > index && obj.el.val() != 100);
+			}
+			else {
+				return (obj.changed === false && obj.elNumber > index && obj.el.val() != 0);
+			}
 		});
-	};
+		return availableElements;
+	}
+
+	function updateRanges(rangeObjects){
+		$.each(rangeObjects, function(index, val) {
+			this.el.on('input', function() {
+				// sum = 0;
+				// (function checkSum(){
+				// 	$.each(rangeObjects, function(index, val) {
+				// 		sum = parseInt(sum) + parseInt(this.defaultVal);
+				// 	})
+				// 	console.log(sum);
+				// })();
+
+				direction = (rangeObjects[index].defaultVal - this.value > 0) ? 1 : -1;
+				prevElements = $.grep(rangeObjects, function(el){
+					return (el.elNumber <= index);
+				});
+				prevElementsSum = 0;
+				$.each(prevElements, function(index, val) {
+					 prevElementsSum = prevElementsSum + parseInt(this.el.val());
+				});
+
+				if (prevElementsSum < 100 || (prevElementsSum == 100 && direction == -1)) {
+					diapazon = Math.abs(rangeObjects[index].defaultVal - this.value);
+					for (i = 1; i <= diapazon; i++) {
+						
+						availableElements = getAvailableElements(rangeObjects, direction, index);
+						
+						if (availableElements.length === 0) {
+							$.each(rangeObjects, function(index, val) {
+								this.changed = false;
+							});
+							availableElements = getAvailableElements(rangeObjects, direction);
+						}
+						nextRangeValue = parseInt(availableElements[0].el.val());
+						availableElements[0].el.val(nextRangeValue + parseInt(direction));
+						$.each(rangeObjects, function(index, val) {
+							 this.setState();
+						});
+						$.each(rangeObjects, function(index, val) {
+							this.defaultVal = $(this.el).val();
+						})
+						availableElements[0].changed = true;
+						if (availableElements.length == 1) {
+							$.each(rangeObjects, function(index, val) {
+								this.changed = false;
+							})
+						}
+					};
+				}
+				else {
+					$(rangeObjects[index].el).val(rangeObjects[index].defaultVal);
+					$.each(rangeObjects, function(index, val) {
+						this.setState();
+						this.el.changed = false;
+					});
+					prevElementsSum = 100;
+				}
+			});
+		});
+	}
 
 
 	$(document).ready(function() {
 		rangeElements = $('.ranges').find('input[type=range]');
-		// updateRangesState(rangeElements);
-		// console.log(updateRangesState(rangeElements));
-
-		updateRanges(rangeElements);
-		// myElem = document.getElementById('range1');
-		// range = new Range(myElem);
-		// console.log(range.elementClass);
-		// console.log(range.elNumber);
-		// console.log(range.elNumber );
-		// console.log(myElem);
-		// console.log(myElem.getAttribute("data-order"));
-		// console.log($('.range1').getAttribute("data"));
+		rangeObjects = setUpRanges(rangeElements);
+		// console.log(rangeObjects);
+		$('button').on('click', function(){
+			updateRanges(rangeObjects);
+		})
+		updateRanges(rangeObjects);
 
 
 	});

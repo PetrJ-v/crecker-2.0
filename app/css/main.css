@@ -229,6 +229,16 @@ input[type=range].range4::-ms-fill-upper {
 input[type=range].range4::-ms-thumb {
   border: 2px solid #939190; }
 
+.test-button {
+  text-align: center;
+  margin-top: 40px; }
+  .test-button button {
+    width: 150px;
+    height: 40px;
+    margin: auto;
+    text-align: center;
+    padding: 5px; }
+
 /*==========  Desktop First  ==========*/
 /* Large Devices, Wide Screens */
 @media only screen and (max-width: 1400px) {
